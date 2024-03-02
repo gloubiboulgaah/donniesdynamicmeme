@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donnie's Dynamic Meme</title>
+    <link rel="icon" href="img/donnie-yellow.png">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body class="body">
+    <div class="text">
+        <h1>Donnie's Dynamic Meme</h1>
+        <p>n'hesitez pas à cliquer partout.</p>
+        <p class="ready">je suis pret.</p>
+    </div>
+    <div class="center-container hidden">
+        <div class="voice invisible-button"></div>
+        <div class="wall-male invisible-button"></div>
+        <div class="wall-female invisible-button"></div>
+        <a href="https://groupecontrole.org/index.html"><div class="seringue hidden"></div></a>
+        <img class="image-center" src="img/fetewojak1.png" alt="">
+        <img class="text-image hidden" src="img/fetewojaktxt.png" alt="">
+    </div>
+</body>
+</html>
+
+<script>
+    const text = document.querySelector('.text');
+    const ready = document.querySelector('.ready');
+    const voice = document.querySelector('.voice');
+    const wallFemale = document.querySelector('.wall-female');
+    const wallMale = document.querySelector('.wall-male');
+
+    const audio = new Audio('audio/male-voice.wav');
+    const femaleAudio = new Audio ('audio/walls-female.wav');
+    const party = new Audio ('audio/party.mp3');
+    const maleAudio = new Audio ('audio/walls-male.wav')
+    const glitch = new Audio ('audio/glitch.mp3');
+    const lonely = new Audio ('audio/lonely.mp3');
+
+    const image = document.querySelector('.image-center');
+    const textImage = document.querySelector('.text-image');
+    const body = document.querySelector('body');
+    const invisibleButton = document.querySelector('.invisible-button');
+    const seringue = document.querySelector('.seringue');
+
+    ready.addEventListener('click', () => {
+        text.remove();
+        party.loop = true;
+        party.play();
+        document.querySelector('.center-container').classList.remove('hidden');
+        body.style.backgroundColor = 'white';
+    });
+
+    voice.addEventListener('click', () => {
+        audio.play();
+        textImage.classList.remove('hidden');
+        setTimeout(() => {
+            party.pause();
+            image.classList.add('hidden');
+            textImage.classList.add('hidden');
+            invisibleButton.classList.add('hidden');
+            body.style.backgroundColor = 'black';
+
+        }, 8000);
+
+        setTimeout(() => {
+            glitch.play();
+            image.src = 'img/fetewojak2.png';
+            image.classList.remove('hidden');
+
+        }, 10000);
+
+        setTimeout(() => {
+            glitch.play();
+            image.classList.add('hidden');
+        }, 12000);
+
+        setTimeout(() => {
+            image.src = 'img/fetewojak3.png';
+            image.classList.remove('hidden');
+            seringue.classList.remove('hidden');
+            lonely.play();
+        }, 14000);
+    });
+
+    wallFemale.addEventListener('click', () => {
+        femaleAudio.play();
+    });
+
+    wallMale.addEventListener('click', () => {
+        maleAudio.play();
+    });
+
+</script>
