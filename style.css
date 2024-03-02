@@ -7,6 +7,12 @@ body {
     cursor: url('img/donnie-yellow-cursor.cur'), auto;
 }
 
+.donnie {
+    text-decoration: none;
+    color: white;
+    cursor: url('img/donnie-black-cursor.cur'), auto;
+}
+
 h1, h2, h3, p {
     color: white;
     text-align: center;
